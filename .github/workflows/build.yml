@@ -1,4 +1,4 @@
-name: CI - Build STM32 Single-Core Firmware
+name: CI - Build and Release STM32 Single-Core Firmware
 
 on:
   push:
@@ -9,24 +9,29 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
+      # Checkout repo
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      # === Build firmware (Debug) ===
-      - name: Build firmware (Debug)
+      # Build firmware
+      - name: Build STM32CubeIDE project
         uses: xanderhendriks/action-build-stm32cubeide@v15.0
         with:
           project-path: '.'
-          project-target: 'Debug'
+          project-target: 'stm32_wireless_mqtt_node/Debug'
 
-      # === Upload ELF artifacts ===
-      - name: Upload ELF artifacts
+      # Upload ELF, BIN, HEX as artifacts
+      - name: Upload Firmware Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: stm32-wireless-mqtt-node-elf
+          name: stm32-wireless-mqtt-node
           path: |
-            *.elf
-            *.bin
-            *.hex
+            stm32_wireless_mqtt_node/Debug/*.elf
+            stm32_wireless_mqtt_node/Debug/*.bin
+            stm32_wireless_mqtt_node/Debug/*.hex
