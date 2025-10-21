@@ -1,0 +1,75 @@
+# -----------------------------------------------------------------------------
+# STM32CubeIDE Single-Core Project (.gitignore)
+# -----------------------------------------------------------------------------
+
+# === Build artifacts ===
+Debug/
+Release/
+Binaries/
+*.elf
+*.bin
+*.hex
+*.map
+*.list
+*.out
+
+# === Object & dependency files ===
+*.o
+*.obj
+*.d
+*.su
+
+# === IDE backup / log / local files ===
+*.log
+*.user
+*.uvoptx
+*.uvprojx
+*.mxproject
+*.stm32cubemx
+*.save
+
+# === Temporary / local ===
+*.bak
+*.tmp
+*.swp
+*.swo
+*.swd
+*.sdf
+*.idb
+*.pdb
+*.db
+
+# === OS specific ===
+.DS_Store
+Thumbs.db
+
+# === Compiled libraries ===
+*.a
+*.lib
+
+# === Linker output ===
+*.ilk
+*.exp
+*.lst
+
+# === Middleware build output ===
+Middlewares/*/lib/
+!Middlewares/**/src/
+!Middlewares/**/include/
+
+# === Keep essential project configuration ===
+!.gitignore
+!README.md
+!*.ioc
+!*.ld
+!*.c
+!*.h
+!.project
+!.cproject
+
+# === Ignore user-specific IDE settings ===
+.settings/
+*.launch
+
+# === Optional ===
+mx.scratch
