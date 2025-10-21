@@ -14,19 +14,19 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # === Build firmware ===
+      # === Build firmware (Debug) ===
       - name: Build firmware (Debug)
         uses: xanderhendriks/action-build-stm32cubeide@v15.0
         with:
-          project-path: 'stm32_wireless_mqtt_node'
-          project-target: 'stm32_wireless_mqtt_node/Debug'
+          project-path: '.'
+          project-target: 'Debug'
 
-      # === Upload build artifacts ===
+      # === Upload ELF artifacts ===
       - name: Upload ELF artifacts
         uses: actions/upload-artifact@v4
         with:
           name: stm32-wireless-mqtt-node-elf
           path: |
-            stm32_wireless_mqtt_node/Debug/*.elf
-            stm32_wireless_mqtt_node/Debug/*.bin
-            stm32_wireless_mqtt_node/Debug/*.hex
+            Debug/*.elf
+            Debug/*.bin
+            Debug/*.hex
