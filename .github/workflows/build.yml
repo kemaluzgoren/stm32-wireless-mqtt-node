@@ -27,6 +27,6 @@ jobs:
         with:
           name: stm32-wireless-mqtt-node-elf
           path: |
-            Debug/*.elf
-            Debug/*.bin
-            Debug/*.hex
+            *.elf
+            *.bin
+            *.hex
